@@ -19,6 +19,10 @@ export class UserModel {
   async findAll() {
     return await User.find({});
   }
+
+  async pushEvent(userId, eventId) {
+    return await User.updateOne({ _id: userId }, { $push: { events: eventId } });
+  }
 }
 
 const userModel = new UserModel();
