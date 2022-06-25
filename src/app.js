@@ -1,7 +1,8 @@
 import cors from "cors";
 import express from "express";
-import { userRouter } from "./routers";
+import { userRouter } from "./routers/userRouter.js";
 import morgan from "morgan";
+
 const app = express();
 // CORS 에러 방지
 app.use(cors());
