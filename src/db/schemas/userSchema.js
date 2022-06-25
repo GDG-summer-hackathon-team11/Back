@@ -6,7 +6,7 @@ const UserSchema = new Schema(
       type: String,
       required: true,
     },
-    nickName: {
+    nickname: {
       type: String,
       required: true,
     },
@@ -19,8 +19,11 @@ const UserSchema = new Schema(
       required: true,
     },
     category: {
-      type: Schema.Types.ObjectId,
-      ref: "categories",
+      type: Array,
+      required: false,
+    },
+    events: {
+      type: Array,
       required: false,
     },
   },
