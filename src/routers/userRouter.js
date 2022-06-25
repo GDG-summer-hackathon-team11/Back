@@ -1,10 +1,9 @@
-import { Router } from "express";
-import { userService } from "../services";
-import jwt from "jsonwebtoken";
+import { Router } from 'express';
+import { userService } from '../services';
 
 const userRouter = Router();
 
-userRouter.get("/user-list", async function (req, res, next) {
+userRouter.get('/user-list', async function (req, res, next) {
   try {
     // 전체 사용자 목록을 얻음
     const users = await userService.getUsers();

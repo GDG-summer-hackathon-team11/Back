@@ -1,16 +1,16 @@
-import { Schema } from "mongoose";
+import { Schema } from 'mongoose';
 
 const CategorySchema = new Schema(
   {
     name: {
-      type: String,
+      type: Array,
       required: true,
     },
   },
   {
-    collection: "categories",
+    collection: 'categories',
     timestamps: true,
-  }
+  },
 );
 
 export { CategorySchema };

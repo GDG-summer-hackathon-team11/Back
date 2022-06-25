@@ -1,12 +1,5 @@
 import { Schema } from 'mongoose';
 
-class Point {
-  constructor({ x, y }) {
-    this.x = x;
-    this.y = y;
-  }
-}
-
 const EventSchema = new Schema(
   {
     time: {
@@ -14,7 +7,7 @@ const EventSchema = new Schema(
       required: true,
     },
     startPoint: {
-      type: Point,
+      type: Object,
       required: true,
     },
     startPointName: {
@@ -37,8 +30,7 @@ const EventSchema = new Schema(
       required: true,
     },
     category: {
-      type: Schema.Types.ObjectId,
-      ref: 'categories',
+      type: String,
       required: false,
     },
   },
