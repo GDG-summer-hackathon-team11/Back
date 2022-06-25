@@ -14,3 +14,4 @@ const CategorySchema = new Schema(
 );
 
 export { CategorySchema };
+
