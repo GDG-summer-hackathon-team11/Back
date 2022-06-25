@@ -22,19 +22,17 @@ userRouter.get('/users', async function (req, res) {
   }
 });
 
-// userRouter.post('/users', async function (req, res) {
-//   try {
-//     const payload = decodePayload(req.header('Authorization'));
-//     const updateInfo = {
+userRouter.get('/users/events', async function (req, res) {
+  try {
+    const payload = decodePayload(req.header('Authorization'));
 
-//     }
+    const user = await userService.getUserById(payload.id);
 
-//     const user = await userService.set
-
-//   } catch (err) {
-//     res.status(401).json({ error: `${err.message}` });
-//   }
-// });
+    res.status(200).json(user.events);
+  } catch (err) {
+    res.status(401).json({ error: `${err.message}` });
+  }
+});
 
 userRouter.post('/users/login', async function (req, res) {
   try {

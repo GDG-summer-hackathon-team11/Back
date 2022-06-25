@@ -22,6 +22,10 @@ const UserSchema = new Schema(
       type: Array,
       required: false,
     },
+    events: {
+      type: Array,
+      required: false,
+    },
   },
   {
     collection: "users",
