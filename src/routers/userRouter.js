@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { userService } from "../services";
+import { userService } from "../services/userService.js";
 import jwt from "jsonwebtoken";
 
 const userRouter = Router();
 
-userRouter.get("/user-list", loginRequired, async function (req, res, next) {
+userRouter.get("/user-list", async function (req, res, next) {
   try {
     // 전체 사용자 목록을 얻음
     const users = await userService.getUsers();
@@ -15,3 +15,5 @@ userRouter.get("/user-list", loginRequired, async function (req, res, next) {
     res.status(401).json({ error: `${err.message}` });
   }
 });
+
+export { userRouter };
