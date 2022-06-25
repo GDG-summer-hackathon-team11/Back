@@ -12,10 +12,6 @@ export class EventModel {
     return await Event.findOne({ _id });
   }
 
-  async create(userInfo) {
-    return await Event.create(userInfo);
-  }
-
   async findAll() {
     return await Event.find({});
   }

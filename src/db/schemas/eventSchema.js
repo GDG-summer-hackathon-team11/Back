@@ -10,13 +10,10 @@ const EventSchema = new Schema(
       type: Object,
       required: true,
     },
-    startPointName: {
-      type: String,
-    },
     checkPoint: {
       type: Array,
     },
-    distance: {
+    level: {
       type: Number,
     },
     ageCoverage: {
