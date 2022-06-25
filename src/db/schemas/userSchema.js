@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { Schema } from 'mongoose';
 
 const UserSchema = new Schema(
   {
@@ -21,16 +21,18 @@ const UserSchema = new Schema(
     category: {
       type: Array,
       required: false,
+      default: [],
     },
     events: {
       type: Array,
       required: false,
+      default: [],
     },
   },
   {
-    collection: "users",
+    collection: 'users',
     timestamps: true,
-  }
+  },
 );
 
 export { UserSchema };

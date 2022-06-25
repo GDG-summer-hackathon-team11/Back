@@ -25,7 +25,6 @@ class UserService {
     return createdNewUser;
   }
 
-
   async login(loginInfo) {
     const { email, password } = loginInfo;
 
@@ -35,23 +34,22 @@ class UserService {
 
     if (bcrypt.hashSync(user.password, hashedPassword)) {
       const payload = {
-        "id": user._id,
-        "nickname": user.nickname,
-        "email": user.email,
-        "age": user.age,
-        "category": user.category,
-      }
+        _id: user._id,
+        nickname: user.nickname,
+        email: user.email,
+        age: user.age,
+        category: user.category,
+      };
 
       const result = {
-        token: makeToken(payload)
-      }
+        token: makeToken(payload),
+      };
 
       return result;
     } else {
       throw new Error('Invalid Login Information');
     }
   }
-
 
   // find All Users
   async getUsers() {
@@ -62,7 +60,9 @@ class UserService {
   async getUserById(_id) {
     return await this.userModel.findById(_id);
   }
-
+  async addUserEvent(userId, eventId) {
+    return await this.userModel.pushEvent(userId, eventId);
+  }
 }
 
 const userService = new UserService(userModel);
