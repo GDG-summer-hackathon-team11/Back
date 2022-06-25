@@ -15,6 +15,12 @@ export class EventModel {
   async findAll() {
     return await Event.find({});
   }
+  async pushUser(userId, eventId) {
+    return await Event.updateOne({ _id: eventId }, { $push: { member: userId } });
+  }
+  async pullUser(userId, eventId) {
+    return await Event.updateOne({ _id: eventId }, { $pull: { member: userId } });
+  }
 }
 
 const eventModel = new EventModel();

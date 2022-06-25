@@ -10,11 +10,11 @@ userRouter.get('/users', async function (req, res) {
     const user = await userService.getUserById(payload.id);
 
     const responseData = {
-      "nickname": user.nickname,
-      "email": user.email,
-      "age": user.age,
-      "category": user.category,
-    }
+      nickname: user.nickname,
+      email: user.email,
+      age: user.age,
+      category: user.category,
+    };
 
     res.status(200).json(responseData);
   } catch (err) {
@@ -37,33 +37,32 @@ userRouter.get('/users/events', async function (req, res) {
 userRouter.post('/users/login', async function (req, res) {
   try {
     const loginInfo = {
-      "email": req.body.email,
-      "password": req.body.password,
-    }
+      email: req.body.email,
+      password: req.body.password,
+    };
 
     const result = await userService.login(loginInfo);
 
     res.status(200).json(result);
   } catch (err) {
-    res.status(401).json({ error: `${err.message}` })
+    res.status(401).json({ error: `${err.message}` });
   }
 });
 
 userRouter.post('/users/register', async function (req, res) {
-  console.log("dd")
   try {
     const registerInfo = {
-      "email": req.body.email,
-      "password": req.body.password,
-      "nickname": req.body.nickname,
-      "age": req.body.age,
-    }
+      email: req.body.email,
+      password: req.body.password,
+      nickname: req.body.nickname,
+      age: req.body.age,
+    };
 
     const responseData = await userService.register(registerInfo);
 
-    res.status(200).json(responseData)
+    res.status(200).json({ message: 'success' });
   } catch (err) {
-    res.status(401).json({ error: `${err.message}` })
+    res.status(401).json({ error: `${err.message}` });
   }
 });
 

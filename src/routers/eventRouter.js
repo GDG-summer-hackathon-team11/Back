@@ -40,8 +40,21 @@ eventRouter.get('/events/:event_id', async function (req, res, next) {
 eventRouter.post('/events/join', async function (req, res, next) {
   try {
     const payload = await decodePayload(req.header('Authorization'));
-    const result = await userService.addUserEvent(payload._id, req.body.event_id);
-    res.status(200).json(result);
+    const user = await userService.addUserEvent(payload._id, req.body.event_id);
+    const event = await eventService.addUserEvent(payload._id, req.body.event_id);
+
+    res.status(200).json(event);
+  } catch (error) {
+    next(error);
+  }
+});
+eventRouter.post('/events/cancel', async function (req, res, next) {
+  try {
+    const payload = await decodePayload(req.header('Authorization'));
+    const user = await userService.deleteUserEvent(payload._id, req.body.event_id);
+    const event = await eventService.deleteUserEvent(payload._id, req.body.event_id);
+
+    res.status(200).json(event);
   } catch (error) {
     next(error);
   }
