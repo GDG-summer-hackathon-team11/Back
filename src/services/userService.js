@@ -1,3 +1,5 @@
+import { UserModel } from "../db";
+
 class UserService {
 
 }
