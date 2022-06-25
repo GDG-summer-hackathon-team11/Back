@@ -23,6 +23,9 @@ export class UserModel {
   async pushEvent(userId, eventId) {
     return await User.updateOne({ _id: userId }, { $push: { events: eventId } });
   }
+  async pullEvent(userId, eventId) {
+    return await User.updateOne({ _id: userId }, { $pull: { events: eventId } });
+  }
 }
 
 const userModel = new UserModel();

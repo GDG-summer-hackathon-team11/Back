@@ -15,6 +15,12 @@ class EventService {
     const getEvents = await this.eventModel.findAll();
     return getEvents;
   }
+  async addUserEvent(userId, eventId) {
+    return await this.eventModel.pushUser(userId, eventId);
+  }
+  async deleteUserEvent(userId, eventId) {
+    return await this.eventModel.pullUser(userId, eventId);
+  }
 }
 
 const eventService = new EventService(eventModel);

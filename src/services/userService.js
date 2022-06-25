@@ -63,6 +63,9 @@ class UserService {
   async addUserEvent(userId, eventId) {
     return await this.userModel.pushEvent(userId, eventId);
   }
+  async deleteUserEvent(userId, eventId) {
+    return await this.userModel.pullEvent(userId, eventId);
+  }
 }
 
 const userService = new UserService(userModel);
