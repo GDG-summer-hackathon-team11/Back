@@ -5,6 +5,10 @@ class EventService {
   constructor(eventModel) {
     this.eventModel = eventModel;
   }
+  async getEvent(_id) {
+    const getEvent = await this.eventModel.findById(_id);
+    return getEvent;
+  }
 
   // 카테고리 목록을 받음.
   async getEvents() {
